@@ -3,14 +3,18 @@ package Poke;
 public class Pokemon {
 	String nome;
 	//tipo?
-	double hp;
+	boolean vivo;
+	int hpmax;
+	int hp;
 	int tipo;
 	double ataque;
 	double defesa;
 	Ataque atk[];
-	Pokemon(double vidas, int type, double atak, double def, Ataque atk[])
+	Pokemon(int vidas, int type, double atak, double def, Ataque atk[])
 	{
-		hp = vidas;
+		vivo = true;
+		hpmax = vidas;
+		hp = hpmax;
 		tipo = type;
 		ataque = atak;
 		defesa = def;

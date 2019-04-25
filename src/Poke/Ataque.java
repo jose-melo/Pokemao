@@ -15,9 +15,11 @@ package Poke;
 public class Ataque {
 	double dano;
 	int tipo;
-	Ataque(double dmg, int type)
+	int accuracy;
+	Ataque(double dmg, int type, int acc)
 	{
 		dano = dmg;
 		tipo = type;
+		accuracy = acc;
 	}
 }
