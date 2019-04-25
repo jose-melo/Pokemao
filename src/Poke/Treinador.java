@@ -13,9 +13,14 @@ public class Treinador {
 		this.festa = festa;
 		this.mochila = itens;
 	}
-	public void setAtivo(int novo)
+	public boolean setAtivo(int novo)
 	{
-		this.ativo = novo;
+		if(festa[novo].getVivo())
+		{
+			this.ativo = novo;
+			return true;
+		}
+		return false;
 	}
 	public int getIndex()
 	{
@@ -33,7 +38,7 @@ public class Treinador {
 	{
 		return festa[ativo];
 	}
-	public Item[] getMochila()
+	public Item[] getItens()
 	{
 		return mochila;
 	}
