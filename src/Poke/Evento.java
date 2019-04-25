@@ -2,10 +2,23 @@ package Poke;
 
 abstract class Evento {
 
-	private String ator, tipoDeEvento;
-	public String getAtor() {
+	protected Treinador ator, alvo;
+	protected int tipoDeEvento;
+	
+	public Evento(Treinador ator, Treinador alvo, int tipoDeEvento){
+		this.ator = ator;
+		this.alvo = alvo;
+		this.tipoDeEvento = tipoDeEvento;
+	}		
+	
+	public Treinador getAtor() {
 		return ator;
 	}
+	
+	public int getTipoDeEvento() {
+		return tipoDeEvento;
+	}
+	
 	
 	abstract void executa();
 	
