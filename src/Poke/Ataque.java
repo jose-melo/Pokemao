@@ -13,13 +13,25 @@ package Poke;
  * 9 = aço 18 = fada
  */
 public class Ataque {
-	double dano;
-	int tipo;
-	int accuracy;
-	Ataque(double dmg, int type, int acc)
+	private int dano;
+	private int tipo;
+	private int accuracy;
+	Ataque(int dmg, int type, int acc)
 	{
 		dano = dmg;
 		tipo = type;
 		accuracy = acc;
+	}
+	public int getDano()
+	{
+		return dano;
+	}
+	public int getTipo()
+	{
+		return tipo;
+	}
+	public int getAccuracy()
+	{
+		return accuracy;
 	}
 }

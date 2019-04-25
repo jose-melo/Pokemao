@@ -29,11 +29,11 @@ public class Treinador {
 	{
 		return festa;
 	}
-	public Pokemon getPokemon(int index)
+	public Pokemon getPokeAtual()
 	{
-		return festa[index];
+		return festa[ativo];
 	}
-	public Item[] getItens()
+	public Item[] getMochila()
 	{
 		return mochila;
 	}
