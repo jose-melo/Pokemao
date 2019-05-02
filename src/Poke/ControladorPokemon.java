@@ -21,7 +21,7 @@ public class ControladorPokemon extends ControladorDeEventos{
 				return new Atacar(ativa.getTreinador(), passiva.getTreinador(), ativa.getP1());
 			case ITEM:
 				Item item = ativa.getTreinador().getItens(ativa.getP1());
-				return new UsarItem(ativa.getTreinador(), item, ativa.getP2());
+				return new UsarItem(ativa.getTreinador(), item, ativa.getP2(), ativa.getPoke());
 			case FUGIR:
 				return new Fugir(ativa.getTreinador());
 			case TROCAR:
@@ -47,19 +47,29 @@ public class ControladorPokemon extends ControladorDeEventos{
 		private int index;
 		private Pokemon[] festa;
 		private Item item;
+		private Pokemon poke;
 		
-		public UsarItem(Treinador t1, Item item, int index) {
+		public UsarItem(Treinador t1, Item item, int index, Pokemon poke) {
 			super(t1, null, ITEM);
 			this.item = item; 
 			festa = ator.getFesta();
 			this.index = index;
+			this.poke = poke;
 		}
 		
 		public void executa() {
-			if(festa[index].atualizaVida(item.getCura())) 
-				System.out.println(">>> "+festa[index].getNome() + " foi curado em "+item.getCura()+"\n");
-			else
-				System.out.println(">>> "+festa[index].getNome() + " não pode ser curado, pois já está morto.\n");
+			if(item.getNome() == "gonorreia invertida") {	
+				if(festa[index].atualizaVida(item.getCura())) 
+					System.out.println(">>> "+festa[index].getNome() + " foi curado em "+item.getCura()+"\n");
+				else
+					System.out.println(">>> "+festa[index].getNome() + " não pode ser curado, pois já está morto.\n");
+			}
+			if(item.getNome() == "pokesfera") {	
+				if(RNG.rolaDado(100 - 100*poke.getHp()/poke.getHpMax())) {
+					System.out.println(">>> Parabéns, voce capturou "+poke.getNome());
+					continua = false;	
+				}
+			}
 		}
 	}	
 	
@@ -102,16 +112,26 @@ public class ControladorPokemon extends ControladorDeEventos{
 				
 				Pokemon alvo_poke = alvo.getPokeAtual();
 				Ataque att = ator_poke.getAtaque(ataque);
-				int dano = att.getDano();
+				double dano = att.getDano();
 				dano = dano * multiplicador[ator_poke.getTipo()][alvo_poke.getTipo()];
 				System.out.println(">>> "+ator_poke.getNome()+" usou "+att.getNome()+" sobre "+ alvo_poke.getNome()+"\n");
-				if(!alvo_poke.atualizaVida(-dano)) {
+				if(!alvo_poke.atualizaVida(-(int)dano)) {
 					alvo.addPokeMortos(1);
 					System.out.println(">>> "+alvo_poke.getNome()+" sofreu "+ dano+" pontos de dano e morreu!!!\n");
 				}else
 					System.out.println(">>> "+alvo_poke.getNome()+" sofreu "+ dano+" pontos de dano\n");
 		}
-	}	
+	}
+	
+	public boolean captura(Treinador t, Pokemon poke) {
+		
+		if(RNG.rolaDado(100 - 100*poke.getHp()/poke.getHpMax())) {
+			System.out.println(">>> Parabéns, voce capturou "+poke.getNome());
+			return true;
+		}
+		return false;
+	}
+	
 	
 	public static int anda(int dir, Mapa mapinha) {
 		
@@ -134,10 +154,17 @@ public class ControladorPokemon extends ControladorDeEventos{
 			mapinha.dir();
 			break;
 		}
+		int id_poke = 0;
+		int chance = 10;
 		
+		if(tile == '#')chance = 50;
 		
-		
-		return dir;
+		if(RNG.rolaDado(chance)) {
+			for(int i = 0; i < 10; i++)
+				id_poke = RNG.rolaPoke(6);
+			return id_poke;
+		}
+		return -1;
 	}
 	
 	public static void executaRound(Acao a1,Acao a2) {

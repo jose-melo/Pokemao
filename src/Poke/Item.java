@@ -3,7 +3,12 @@ package Poke;
 public class Item {
 	private int cura;
 	private String nome;
-	Item(int cura, String nome)
+	
+	public Item(String nome) {
+		this(0, nome);
+	}
+	
+	public Item(int cura, String nome)
 	{
 		this.cura = cura;
 		this.nome = nome;

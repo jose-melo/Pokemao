@@ -11,7 +11,6 @@ public class ControladorDeEventos extends Constante{
 				multiplicador[i][j] = 1;
 	}
 	
-	
 	public void adicionaEvento(Evento e) {
 		lista.adiciona(e);
 	}
