@@ -6,18 +6,17 @@ public class Pokemon {
 	private boolean vivo;
 	private int hpmax;
 	private int hp;
-	private int ataque;
 	private int defesa;
 	private Ataque atk[];
 	
-	Pokemon(int vidas, int type, int atak, int def, Ataque atk[])
+	Pokemon(String nome, int vidas, int type, int def, Ataque atk[])
 	{
 		vivo = true;
 		hpmax = vidas;
 		hp = hpmax;
 		tipo = type;
-		ataque = atak;
 		defesa = def;
+		this.nome = nome;
 		this.atk=atk;
 	}
 	public boolean atualizaVida(int value)
@@ -65,10 +64,6 @@ public class Pokemon {
 	public String getNome()
 	{
 		return nome;
-	}
-	public int getAtaque()
-	{
-		return ataque;
 	}
 	public int getDefesa()
 	{

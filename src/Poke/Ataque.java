@@ -17,7 +17,11 @@ public class Ataque {
 	private int dano;
 	private int tipo;
 	private int accuracy;
-	Ataque(String nome, int dmg, int type, int acc)
+	
+	public Ataque(String nome, int dmg, int type) {
+		this(nome,dmg,type, 0);
+	}
+	public Ataque(String nome, int dmg, int type, int acc)
 	{
 		this.nome = nome;
 		dano = dmg;
@@ -35,5 +39,8 @@ public class Ataque {
 	public int getAccuracy()
 	{
 		return accuracy;
+	}
+	public String getNome() {
+		return nome;
 	}
 }

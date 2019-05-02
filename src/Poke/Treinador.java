@@ -2,6 +2,7 @@ package Poke;
 
 public class Treinador {
 	private int index;
+	private int pokeMortos = 0;
 	private String nome;
 	private Pokemon festa[];
 	private Item mochila[];
@@ -22,25 +23,31 @@ public class Treinador {
 		}
 		return false;
 	}
-	public int getIndex()
-	{
+	public int getIndex(){
 		return index;
 	}
-	public String getNome()
-	{
+	
+	public String getNome(){
 		return nome;
 	}
-	public Pokemon[] getFesta()
-	{
+	
+	public Pokemon[] getFesta(){
 		return festa;
 	}
-	public Pokemon getPokeAtual()
-	{
+		
+	public Pokemon getPokeAtual(){
 		return festa[ativo];
 	}
-	public Item getItens(int index)
-	{
+	
+	public Item getItens(int index){
 		return mochila[index];
 	}
 	
+	public void addPokeMortos(int add) {
+		pokeMortos += add;
+	}
+	
+	public int getPokeMortos() {
+		return pokeMortos;
+	}
 }

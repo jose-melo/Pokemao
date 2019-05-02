@@ -10,6 +10,7 @@ public class Acao extends Constante{
 		this(t, evento, p1, 0);
 	}
 	
+	
 	public Acao(Treinador t, int  evento) {
 		this(t, evento, 0, 0);
 	}		
