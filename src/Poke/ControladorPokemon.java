@@ -2,12 +2,14 @@ package Poke;
 
 public class ControladorPokemon extends ControladorDeEventos{
 
+	private static boolean continua = true;
+	
 	public boolean prioriza(Evento e1, Evento e2) {
 		if(e1.getTipoDeEvento() > e2.getTipoDeEvento())
 			return true;
 		
 		if(e1.getTipoDeEvento() == e2.getTipoDeEvento())
-			if(e1.getAtor().getIndex() > e1.getAtor().getIndex())
+			if(e1.getAtor().getIndex() < e2.getAtor().getIndex())
 				return true;
 		return false;
 	}
@@ -35,7 +37,8 @@ public class ControladorPokemon extends ControladorDeEventos{
 		}
 		
 		public void executa() {
-			System.out.println(ator.getNome()+"fugiu!!");										
+			System.out.println(ator.getNome()+"fugiu!!");
+			continua = false;
 		}
 	}	
 	
@@ -54,9 +57,9 @@ public class ControladorPokemon extends ControladorDeEventos{
 		
 		public void executa() {
 			if(festa[index].atualizaVida(item.getCura())) 
-				System.out.println(festa[index].getNome() + " foi curado em "+item.getCura());
+				System.out.println(">>> "+festa[index].getNome() + " foi curado em "+item.getCura()+"\n");
 			else
-				System.out.println(festa[index].getNome() + " não pode ser curado, pois já está morto.");
+				System.out.println(">>> "+festa[index].getNome() + " não pode ser curado, pois já está morto.\n");
 		}
 	}	
 	
@@ -73,9 +76,9 @@ public class ControladorPokemon extends ControladorDeEventos{
 		public void executa() {
 			Pokemon anterior = ator.getPokeAtual();
 			if(ator.setAtivo(index))
-				System.out.println(treinador1.getNome() + " trocou "+anterior+" por "+ator.getPokeAtual());
+				System.out.println(">>> "+treinador1.getNome() + " trocou "+anterior.getNome()+" por "+ator.getPokeAtual().getNome()+"\n");
 			else
-				System.out.println("Não foi possivel trocar: o pokemón está morto");
+				System.out.println(">>> Não foi possivel trocar: o pokemón está morto\n");
 		}
 	}	
 	
@@ -93,7 +96,7 @@ public class ControladorPokemon extends ControladorDeEventos{
 				Pokemon ator_poke = ator.getPokeAtual();
 				
 				if(!ator_poke.estaVivo()) {
-					System.out.println("O ataque de "+ator.getNome()+" falhou pois "+ator.getPokeAtual().getNome()+"esta morto!!");
+					System.out.println(">>> O ataque de "+ator.getNome()+" falhou pois "+ator.getPokeAtual().getNome()+" esta morto!!\n");
 					return;
 				}
 				
@@ -101,12 +104,12 @@ public class ControladorPokemon extends ControladorDeEventos{
 				Ataque att = ator_poke.getAtaque(ataque);
 				int dano = att.getDano();
 				dano = dano * multiplicador[ator_poke.getTipo()][alvo_poke.getTipo()];
-				System.out.println(ator_poke.getNome()+" usou "+att.getNome()+" sobre "+ alvo_poke.getNome());
+				System.out.println(">>> "+ator_poke.getNome()+" usou "+att.getNome()+" sobre "+ alvo_poke.getNome()+"\n");
 				if(!alvo_poke.atualizaVida(-dano)) {
 					alvo.addPokeMortos(1);
-					System.out.println(alvo_poke.getNome()+" sofreu "+ dano+"pontos de dano e morreu");
-				}
-				System.out.println(alvo_poke.getNome()+" sofreu "+ dano+" pontos de dano");
+					System.out.println(">>> "+alvo_poke.getNome()+" sofreu "+ dano+" pontos de dano e morreu!!!\n");
+				}else
+					System.out.println(">>> "+alvo_poke.getNome()+" sofreu "+ dano+" pontos de dano\n");
 		}
 	}	
 	
@@ -119,10 +122,10 @@ public class ControladorPokemon extends ControladorDeEventos{
 		
 		if(control.prioriza(eventoT1, eventoT2)) {
 			eventoT1.executa();
-			eventoT2.executa();
+			if(continua)eventoT2.executa();
 		}else {
 			eventoT2.executa();
-			eventoT1.executa();
+			if(continua)eventoT1.executa();
 		}			
 	}	
 }
