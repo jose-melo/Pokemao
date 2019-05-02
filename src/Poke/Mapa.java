@@ -8,10 +8,10 @@ public class Mapa {
 	
 		for(int i = 1; i <= 50; i++)
 			for(int j = 1; j <= 50; j++)
-				if(RNG.rolaDado() == 1)
-					mapa[i][j] = "#";
+				if(RNG.rolaDado())
+					mapa[i][j] = '#';
 				else
-					mapa[i][j] = ".";	
+					mapa[i][j] = '.';	
 	
 	}
 	
