@@ -15,7 +15,7 @@ public class Treinador {
 	}
 	public boolean setAtivo(int novo)
 	{
-		if(festa[novo].getVivo())
+		if(festa[novo].estaVivo())
 		{
 			this.ativo = novo;
 			return true;
@@ -38,9 +38,9 @@ public class Treinador {
 	{
 		return festa[ativo];
 	}
-	public Item[] getItens()
+	public Item getItens(int index)
 	{
-		return mochila;
+		return mochila[index];
 	}
 	
 }

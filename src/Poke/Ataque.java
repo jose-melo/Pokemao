@@ -13,11 +13,13 @@ package Poke;
  * 9 = aço 18 = fada
  */
 public class Ataque {
+	private String nome;
 	private int dano;
 	private int tipo;
 	private int accuracy;
-	Ataque(int dmg, int type, int acc)
+	Ataque(String nome, int dmg, int type, int acc)
 	{
+		this.nome = nome;
 		dano = dmg;
 		tipo = type;
 		accuracy = acc;

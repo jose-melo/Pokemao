@@ -9,6 +9,7 @@ public class Pokemon {
 	private int ataque;
 	private int defesa;
 	private Ataque atk[];
+	
 	Pokemon(int vidas, int type, int atak, int def, Ataque atk[])
 	{
 		vivo = true;
@@ -45,7 +46,7 @@ public class Pokemon {
 	{
 		return atk[index];
 	}
-	public boolean getVivo()
+	public boolean estaVivo()
 	{
 		return vivo;
 	}
