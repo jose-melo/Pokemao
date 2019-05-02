@@ -7,7 +7,6 @@ public class Mapa {
 	private int tile;
 	
 	public void geraMapa() {
-		
 		for(int i = 0; i < 50; i++)
 			for(int j = 0; j < 50; j++)
 				if(RNG.rolaDado(50))
@@ -17,6 +16,7 @@ public class Mapa {
 		
 		for(int i = 0; i < 50; i++)
 			mapa[0][i] = mapa[i][0] = mapa[50][i] = mapa[i][50] = 'X';
+		tile = mapa[x][y];
 	}
 	
 	
@@ -60,6 +60,17 @@ public class Mapa {
 		return tile;
 	}
 	
+	public void imprimeMapa() {
+		tile = mapa[x][y];
+		for(int i =  0; i <= 50; i++) {
+			for(int j = 0; j <= 50; j++)
+				if(mapa[i][j] == tile)
+					System.out.print("P ");
+				else
+					System.out.print((char) mapa[i][j]+" ");
+			System.out.println("");
+		}
+	}
 	
 	
 	

@@ -24,12 +24,12 @@ public class RunnerMapa extends Constante{
 		
 		Pokemon[][] selvagens = new Pokemon[7][1];
 		
-		selvagens[0][1] = new Pokemon("Pikachu", 100, ELETRICO, 30, listaAtaques);
-		selvagens[1][1] = new Pokemon("Raichu", 100, FANTASMA, 40, listaAtaques);
-		selvagens[2][1]= new Pokemon("Digimon", 100, TERRA, 50, listaAtaques);
-		selvagens[3][1] = new Pokemon("Pegamon", 100, LUTADOR, 10, listaAtaques);
-		selvagens[4][1] = new Pokemon("Fingermon", 100, ACO, 20, listaAtaques);
-		selvagens[5][1] = new Pokemon("Topzeramon", 100, GRAMA, 70, listaAtaques);
+		selvagens[0][0] = new Pokemon("Pikachu", 100, ELETRICO, 30, listaAtaques);
+		selvagens[1][0] = new Pokemon("Raichu", 100, FANTASMA, 40, listaAtaques);
+		selvagens[2][0]= new Pokemon("Digimon", 100, TERRA, 50, listaAtaques);
+		selvagens[3][0] = new Pokemon("Pegamon", 100, LUTADOR, 10, listaAtaques);
+		selvagens[4][0] = new Pokemon("Fingermon", 100, ACO, 20, listaAtaques);
+		selvagens[5][0] = new Pokemon("Topzeramon", 100, GRAMA, 70, listaAtaques);
 		
 		Treinador selvagem;
 		
@@ -49,15 +49,41 @@ public class RunnerMapa extends Constante{
 		Mapa mapa = new Mapa();
 		mapa.geraMapa();
 		int poke;
-		while(true) 
-		{
-		System.out.println("Selecione uma direcao para andar:");
-		System.out.println("0 - CIMA|| 1 - BAIXO || 2 - ESQUERDA || 3 - DIREITA");
-		int e1 = in.nextInt();
-		poke = ControladorPokemon.Anda(e1,mapa);
-		selvagem = new Treinador(2, name, selvagens[poke], itens);
+		while(true){
+			System.out.println("Selecione uma direcao para andar:");
+			System.out.println("0 - CIMA|| 1 - BAIXO || 2 - ESQUERDA || 3 - DIREITA");
+			mapa.imprimeMapa();			
+			int e1 = in.nextInt();
+			poke = ControladorPokemon.anda(e1,mapa);
+			if(poke != -1) {
+				selvagem = new Treinador(2, name, selvagens[poke], itens);
+				Batalha.executaBatalha(player1, selvagem);
+			}
+			
+			
 		}
-		in.close();
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

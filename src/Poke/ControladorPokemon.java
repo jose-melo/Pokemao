@@ -135,9 +135,7 @@ public class ControladorPokemon extends ControladorDeEventos{
 	
 	public static int anda(int dir, Mapa mapinha) {
 		
-		int x, y, tile;	
-		x = mapinha.getX();
-		y = mapinha.getY();
+		int tile;
 		tile = mapinha.getTile();
 		
 		switch(dir) {
