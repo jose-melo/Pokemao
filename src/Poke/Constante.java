@@ -3,6 +3,14 @@ package Poke;
 abstract class Constante {
 	
 	/*ACOES*/
+	protected static final int CIMA = 0;
+	protected static final int BAIXO = 1;
+	protected static final int DIREITA = 2;
+	protected static final int ESQUERDA = 3;
+	
+	
+	
+	/*ACOES*/
 	protected static final int FUGIR = 3;
 	protected static final int TROCAR = 2;
 	protected static final int ITEM = 1;

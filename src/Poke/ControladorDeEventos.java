@@ -8,7 +8,10 @@ public class ControladorDeEventos extends Constante{
 	static {
 		for(int i = 1; i < 19; i++)
 			for(int j = 1; j < 19; j++)
-				multiplicador[i][j] = 1;	
+				multiplicador[i][j] = 1;
+		
+		
+		
 	}
 	
 	

@@ -113,6 +113,33 @@ public class ControladorPokemon extends ControladorDeEventos{
 		}
 	}	
 	
+	public static int anda(int dir, Mapa mapinha) {
+		
+		int x, y, tile;	
+		x = mapinha.getX();
+		y = mapinha.getY();
+		tile = mapinha.getTile();
+		
+		switch(dir) {
+		case CIMA:
+			mapinha.cima();
+			break;
+		case BAIXO:
+			mapinha.baixo();
+			break;
+		case ESQUERDA:
+			mapinha.esq();
+			break;
+		case DIREITA:
+			mapinha.dir();
+			break;
+		}
+		
+		
+		
+		return dir;
+	}
+	
 	public static void executaRound(Acao a1,Acao a2) {
 		
 		ControladorPokemon control = new ControladorPokemon();
