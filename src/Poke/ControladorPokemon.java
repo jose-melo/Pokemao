@@ -3,6 +3,7 @@ package Poke;
 public class ControladorPokemon extends ControladorDeEventos{
 
 	private static boolean continua = true;
+	private static boolean continua2 = true;
 	
 	public boolean prioriza(Evento e1, Evento e2) {
 		if(e1.getTipoDeEvento() > e2.getTipoDeEvento())
@@ -68,7 +69,9 @@ public class ControladorPokemon extends ControladorDeEventos{
 				if(RNG.rolaDado(100 - 100*poke.getHp()/poke.getHpMax())) {
 					System.out.println(">>> Parabéns, voce capturou "+poke.getNome());
 					continua = false;	
-				}
+				}else {
+					System.out.println(">>> Que pena, "+poke.getNome()+" fugiu de você. ;C");
+				}			
 			}
 		}
 	}	
@@ -153,7 +156,7 @@ public class ControladorPokemon extends ControladorDeEventos{
 			break;
 		}
 		int id_poke = 0;
-		int chance = 10;
+		int chance = 0;
 		
 		if(tile == '#')chance = 50;
 		
@@ -165,7 +168,7 @@ public class ControladorPokemon extends ControladorDeEventos{
 		return -1;
 	}
 	
-	public static void executaRound(Acao a1,Acao a2) {
+	public static boolean executaRound(Acao a1,Acao a2) {
 		
 		ControladorPokemon control = new ControladorPokemon();
 		
@@ -175,9 +178,11 @@ public class ControladorPokemon extends ControladorDeEventos{
 		if(control.prioriza(eventoT1, eventoT2)) {
 			eventoT1.executa();
 			if(continua)eventoT2.executa();
+			
 		}else {
 			eventoT2.executa();
 			if(continua)eventoT1.executa();
-		}			
+		}	
+		return continua2;
 	}	
 }

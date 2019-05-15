@@ -48,16 +48,18 @@ public class RunnerMapa extends Constante{
 		Treinador player1 = new Treinador(1, name, party1, itens);
 		Mapa mapa = new Mapa();
 		mapa.geraMapa();
+		mapa.imprimeMapa();	
 		int poke;
 		while(true){
 			System.out.println("Selecione uma direcao para andar:");
-			System.out.println("0 - CIMA|| 1 - BAIXO || 2 - ESQUERDA || 3 - DIREITA");
-			mapa.imprimeMapa();			
+			System.out.println("0 - CIMA|| 1 - BAIXO || 2 - ESQUERDA || 3 - DIREITA");	
 			int e1 = in.nextInt();
 			poke = ControladorPokemon.anda(e1,mapa);
+			mapa.imprimeMapa();		
 			if(poke != -1) {
-				selvagem = new Treinador(2, name, selvagens[poke], itens);
+				selvagem = new Treinador(2, selvagens[poke][0].getNome(), selvagens[poke], itens);
 				Batalha.executaBatalha(player1, selvagem);
+				mapa.imprimeMapa();	
 			}
 			
 			

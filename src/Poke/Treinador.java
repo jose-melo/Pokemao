@@ -47,6 +47,10 @@ public class Treinador {
 		pokeMortos += add;
 	}
 	
+	public Item[] getMochila() {
+		return mochila;
+	}
+	
 	public int getPokeMortos() {
 		return pokeMortos;
 	}

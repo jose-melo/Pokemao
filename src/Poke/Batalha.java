@@ -6,13 +6,13 @@ public class Batalha extends Constante{
 
 	public static void executaBatalha(Treinador player1, Treinador player2) {
 		
-		boolean perdeu = false;
+		boolean acabou = false;
 		int prox = 1;		
 		Scanner in = new Scanner(System.in);
 		System.out.println("----------------------------");
 		System.out.println("BEM-VINDO AO POKE-POKE JOGO");
 		System.out.println("----------------------------");
-		while(player1.getPokeMortos() != 6 && player2.getPokeMortos() != 6 && !perdeu) {
+		while(player1.getPokeMortos() != player1.getFesta().length && player2.getPokeMortos() != player2.getFesta().length && !acabou) {
 
 			System.out.println(player1.getNome()+": "+player1.getPokeMortos()+" vs. "+player2.getNome()+": "+player2.getPokeMortos());
 			System.out.println("#############################");
@@ -30,6 +30,7 @@ public class Batalha extends Constante{
 			Acao a1 = null;
 			Acao a2 = null;
 			Pokemon[] festinha;
+			Item[] mochilinha;
 			switch(e1) {
 				case 0:
 					System.out.println("Escolha seu ataque:");
@@ -40,13 +41,28 @@ public class Batalha extends Constante{
 					a1 = new Acao(player1, ATACAR, atk);
 					break;
 				case 1:
-					System.out.println("Selecione o pokemon que deseja curar:");
-					festinha = player1.getFesta();
-					for(int i = 0; i < 6; i++)
-						System.out.print("|| ("+i+") "+festinha[i].getNome()+" ");
+					System.out.println("Selecione o beat it que deseja usar:");
+					mochilinha = player1.getMochila();
+					for(int i = 0; i < mochilinha.length; i++)
+						System.out.print("|| ("+i+") "+mochilinha[i].getNome()+" ");
 					System.out.println(" ");
-					int idx = in.nextInt();
-					a1 = new Acao(player1, ITEM, 0, idx);
+					int op = in.nextInt();
+					
+					if(op == 0) {
+						System.out.println("Selecione o pokemon que deseja curar:");
+						festinha = player1.getFesta();
+						for(int i = 0; i < player1.getFesta().length; i++)
+							System.out.print("|| ("+i+") "+festinha[i].getNome()+" ");
+						System.out.println(" ");
+						int idx = in.nextInt();
+						a1 = new Acao(player1, ITEM, 0, idx);
+					}
+					
+					if(op == 1) {
+						System.out.println("Vá pegar seu poke manolo:");
+						a1 = new Acao(player1, ITEM, 1, player2.getPokeAtual());
+					}
+					
 					break;
 				case 2:
 					System.out.println("Selecione o pokemon que deseja trocar:");
@@ -67,19 +83,19 @@ public class Batalha extends Constante{
 				a2 = new Acao(player2, TROCAR, prox);
 				prox++;
 			}
-			ControladorPokemon.executaRound(a1, a2);
+			acabou = ControladorPokemon.executaRound(a1, a2);
 			
 			
 			if(a1.getTipoEvento() == FUGIR) {
 				System.out.println("#############################");
 				System.out.println("Você perdeu!!!");
 				System.out.println("#############################");
-				perdeu = true;
+				acabou = true;
 			}
 		}
 
-		if(!perdeu) {
-			if(player1.getPokeMortos() != 6) {
+		if(!acabou) {
+			if(player1.getPokeMortos() != player1.getFesta().length) {
 				System.out.println("#############################");
 				System.out.println("Você ganhou!!!");
 				System.out.println("#############################");
@@ -88,8 +104,7 @@ public class Batalha extends Constante{
 				System.out.println("Você perdeu!!!");
 				System.out.println("#############################");
 			}
-		}	
-		in.close();
+		}
 	}
 	
 }
