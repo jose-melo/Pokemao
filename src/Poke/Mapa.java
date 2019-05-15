@@ -52,6 +52,10 @@ public class Mapa {
 		return x;
 	}
 	
+	public int getPos(int i, int j) {
+		return mapa[i][j];
+	}
+	
 	public int getY() {
 		return y;
 	}

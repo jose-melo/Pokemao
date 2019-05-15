@@ -10,9 +10,9 @@ public class Batalha extends Constante{
 		int prox = 1;		
 		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
-		System.out.println("----------------------------");
-		System.out.println("BEM-VINDO AO POKEkom JOGO");
-		System.out.println("----------------------------");
+		System.out.println("-----------------------------");
+		System.out.println("-------BATALHA POKEMON-------");
+		System.out.println("-----------------------------");
 		while(player1.getPokeMortos() != player1.getFesta().length && player2.getPokeMortos() != player2.getFesta().length && continua) {
 
 			System.out.println(player1.getNome()+": "+player1.getPokeMortos()+" vs. "+player2.getNome()+": "+player2.getPokeMortos());
@@ -25,9 +25,16 @@ public class Batalha extends Constante{
 			System.out.println("#############################");
 			
 			System.out.println("Selecione uma acao:");	
-			
 			System.out.println("0 - ATACAR|| 1 - ITEM || 2 - TROCAR || 3 - FUGIR");
 			int e1 = in.nextInt();
+			
+			if(e1 == 0 && !player1.getPokeAtual().estaVivo()) {
+				System.out.println("Você não pode atacar pois seu pokemon atual está morto.");	
+				System.out.println("Selecione uma outra acao:");	
+				System.out.println("1 - ITEM || 2 - TROCAR || 3 - FUGIR");
+				e1 = in.nextInt();
+			}			
+			
 			Acao a1 = null;
 			Acao a2 = null;
 			Pokemon[] festinha;

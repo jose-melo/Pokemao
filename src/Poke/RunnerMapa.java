@@ -37,13 +37,14 @@ public class RunnerMapa extends Constante{
 		System.out.println("BEM-VINDO AO POKE-POKE JOGO");
 		System.out.println("----------------------------");
 		
-		System.out.println("Digite seu nome: ");
+		//System.out.println("Digite seu nome: ");
 		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
-		String name = in.nextLine();
+		//String name = in.nextLine();
+		String name = "zehzin";
 		
 		Item[] itens = new Item[2];
-		itens[0] = new Item(45, "gonorreia invertida");
+		itens[0] = new Item(45, "Potion");
 		itens[1] = new Item("pokesfera");
 		
 		Treinador player1 = new Treinador(1, name, party1, itens);

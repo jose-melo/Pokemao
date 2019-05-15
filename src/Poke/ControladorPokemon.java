@@ -139,11 +139,10 @@ public class ControladorPokemon extends ControladorDeEventos{
 	public static int anda(int dir, Mapa mapinha) {
 		
 		int tile;
-		tile = mapinha.getTile();
-		
 		switch(dir) {
 		case CIMA:
 			mapinha.cima();
+			
 			break;
 		case BAIXO:
 			mapinha.baixo();
@@ -155,9 +154,10 @@ public class ControladorPokemon extends ControladorDeEventos{
 			mapinha.dir();
 			break;
 		}
+		
 		int id_poke = 0;
 		int chance = 0;
-		
+		tile = mapinha.getTile();
 		if(tile == '#')chance = 50;
 		
 		if(chance != 0 && RNG.rolaDado(chance)) {
