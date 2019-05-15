@@ -3,7 +3,6 @@ package Poke;
 public class ControladorPokemon extends ControladorDeEventos{
 
 	private static boolean continua = true;
-	private static boolean continua2 = true;
 	
 	public boolean prioriza(Evento e1, Evento e2) {
 		if(e1.getTipoDeEvento() > e2.getTipoDeEvento())
@@ -121,8 +120,9 @@ public class ControladorPokemon extends ControladorDeEventos{
 				if(!alvo_poke.atualizaVida(-(int)dano)) {
 					alvo.addPokeMortos(1);
 					System.out.println(">>> "+alvo_poke.getNome()+" sofreu "+ dano+" pontos de dano e morreu!!!\n");
-				}else
+				}else {
 					System.out.println(">>> "+alvo_poke.getNome()+" sofreu "+ dano+" pontos de dano\n");
+					}
 		}
 	}
 	
@@ -160,7 +160,7 @@ public class ControladorPokemon extends ControladorDeEventos{
 		
 		if(tile == '#')chance = 50;
 		
-		if(RNG.rolaDado(chance)) {
+		if(chance != 0 && RNG.rolaDado(chance)) {
 			for(int i = 0; i < 10; i++)
 				id_poke = RNG.rolaPoke(6);
 			return id_poke;
@@ -183,6 +183,6 @@ public class ControladorPokemon extends ControladorDeEventos{
 			eventoT2.executa();
 			if(continua)eventoT1.executa();
 		}	
-		return continua2;
+		return continua;
 	}	
 }

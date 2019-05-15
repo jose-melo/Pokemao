@@ -6,7 +6,9 @@ public class Runner extends Constante{
 
 	public static void main(String args[]) {
 		
+		@SuppressWarnings("unused")
 		boolean perdeu = false;
+		@SuppressWarnings("unused")
 		int prox = 1;
 		
 		Ataque[] listaAtaques = new Ataque[4];

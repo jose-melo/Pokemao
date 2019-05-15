@@ -5,14 +5,15 @@ import java.util.Scanner;
 public class Batalha extends Constante{
 
 	public static void executaBatalha(Treinador player1, Treinador player2) {
-		
-		boolean acabou = false;
+
+		boolean continua = true;
 		int prox = 1;		
+		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
 		System.out.println("----------------------------");
-		System.out.println("BEM-VINDO AO POKE-POKE JOGO");
+		System.out.println("BEM-VINDO AO POKEkom JOGO");
 		System.out.println("----------------------------");
-		while(player1.getPokeMortos() != player1.getFesta().length && player2.getPokeMortos() != player2.getFesta().length && !acabou) {
+		while(player1.getPokeMortos() != player1.getFesta().length && player2.getPokeMortos() != player2.getFesta().length && continua) {
 
 			System.out.println(player1.getNome()+": "+player1.getPokeMortos()+" vs. "+player2.getNome()+": "+player2.getPokeMortos());
 			System.out.println("#############################");
@@ -83,18 +84,22 @@ public class Batalha extends Constante{
 				a2 = new Acao(player2, TROCAR, prox);
 				prox++;
 			}
-			acabou = ControladorPokemon.executaRound(a1, a2);
 			
-			
-			if(a1.getTipoEvento() == FUGIR) {
-				System.out.println("#############################");
-				System.out.println("Você perdeu!!!");
-				System.out.println("#############################");
-				acabou = true;
+			continua = ControladorPokemon.executaRound(a1, a2);
+			if(!continua) {	
+				if(a1.getTipoEvento() == FUGIR) {
+					System.out.println("#############################");
+					System.out.println("Você perdeu!!!");
+					System.out.println("#############################");
+				}else {
+					System.out.println("#############################");
+					System.out.println("A Batalha acabou: você capturou seu pokemon!!!");
+					System.out.println("#############################");
+				}
 			}
 		}
 
-		if(!acabou) {
+		if(continua) {
 			if(player1.getPokeMortos() != player1.getFesta().length) {
 				System.out.println("#############################");
 				System.out.println("Você ganhou!!!");

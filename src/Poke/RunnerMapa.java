@@ -38,6 +38,7 @@ public class RunnerMapa extends Constante{
 		System.out.println("----------------------------");
 		
 		System.out.println("Digite seu nome: ");
+		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
 		String name = in.nextLine();
 		
