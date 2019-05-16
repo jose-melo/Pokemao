@@ -57,6 +57,12 @@ public class Pokemon {
 	{
 		return hp;
 	}
+	
+	public void setaHP(int val) {
+		hp = val;
+		vivo = true;
+	}
+	
 	public int getHpMax()
 	{
 		return hpmax;

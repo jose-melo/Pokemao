@@ -15,7 +15,7 @@ public class Runner extends Constante{
 		
 		listaAtaques[0] = new Ataque("Choque do trovão", 35, ELETRICO);
 		listaAtaques[1] = new Ataque("Vomito cuspido", 40, GRAMA);
-		listaAtaques[2] = new Ataque("Aula do Gomi", 100, VENENO);
+		listaAtaques[2] = new Ataque("Aula na poli", 100, VENENO);
 		listaAtaques[3] = new Ataque("Politecnico ", 20, TREVAS);
 		
 		Pokemon[] party1 = new Pokemon[6];
@@ -38,7 +38,7 @@ public class Runner extends Constante{
 		
 		
 		Item[] itens = new Item[1];
-		itens[0] = new Item(45, "gonorreia invertida");
+		itens[0] = new Item(45, "Potion");
 		
 		Treinador player2 = new Treinador(2, "Hamlet", party2, itens);
 		

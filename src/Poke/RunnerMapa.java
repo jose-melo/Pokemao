@@ -45,7 +45,7 @@ public class RunnerMapa extends Constante{
 		
 		Item[] itens = new Item[2];
 		itens[0] = new Item(45, "Potion");
-		itens[1] = new Item("pokesfera");
+		itens[1] = new Item("Pokesfera");
 		
 		Treinador player1 = new Treinador(1, name, party1, itens);
 		Mapa mapa = new Mapa();
@@ -61,6 +61,7 @@ public class RunnerMapa extends Constante{
 			if(poke != -1) {
 				selvagem = new Treinador(2, selvagens[poke][0].getNome(), selvagens[poke], itens);
 				Batalha.executaBatalha(player1, selvagem);
+				selvagem.getPokeAtual().setaHP(100);
 				mapa.imprimeMapa();	
 			}
 			

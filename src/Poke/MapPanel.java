@@ -10,6 +10,7 @@ import javax.swing.*;
 
 public class MapPanel extends JPanel{
 
+	
 	private final int TAM_CELULA_MAPA = 70;  
 	private final Color COR_DO_MAPA = new Color(105, 196, 155); 
 	private final ImageIcon IMAGEM_JOGADOR = new ImageIcon("img/dedo.png");
@@ -22,6 +23,7 @@ public class MapPanel extends JPanel{
 	private JLabel[][] mapLabels; 
 	private JLabel texto;  
 	public JFrame batalha;
+	private static final long serialVersionUID = 1L;
 	public static JFrame pokemonWindow;
 	private JPanel tela, buttons, aux, mapPanel;
 	private JButton cima, baixo, esquerda, direita;
@@ -189,11 +191,10 @@ public class MapPanel extends JPanel{
 				if(oMapa.getTile() == '#' && RNG.rolaDado(50))poke = RNG.rolaPoke(6);
 				if(poke != -1) {
 
-					mapPanel.setVisible(false);
 					selvagem = new Treinador(2, selvagens[poke][0].getNome(), selvagens[poke], itens);
 					Batalha.executaBatalha(player1, selvagem);
 					poke = -1;
-					mapPanel.setVisible(true);
+					selvagem.getPokeAtual().setaHP(100);
 				}
 				
 		      }
