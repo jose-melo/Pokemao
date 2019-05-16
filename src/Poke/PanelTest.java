@@ -107,7 +107,7 @@ public class PanelTest extends JPanel
 	      mapa.geraMapa();
 	      // Create new Pokemon game with selected starter Pokemon
 	      pokemonWindow = new JFrame("Map");
-	      pokemonWindow.getContentPane().add (new MapPanel(10, 10, mapa));  // 10x10 map
+	      pokemonWindow.getContentPane().add (new MapPanel(8, 8, mapa));  // 10x10 map
 	      pokemonWindow.pack();
 	      pokemonWindow.setVisible(true);
 	    }

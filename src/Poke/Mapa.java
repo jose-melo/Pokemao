@@ -1,7 +1,7 @@
 package Poke;
 
 public class Mapa {
-	private  final int tam_mapa = 10;
+	private  final int tam_mapa = 8;
 	private int[][] mapa = new int[tam_mapa + 1][tam_mapa + 1];
 	private int x = 1, y = 1;
 	private int tile;

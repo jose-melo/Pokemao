@@ -58,13 +58,13 @@ public class ControladorPokemon extends ControladorDeEventos{
 		}
 		
 		public void executa() {
-			if(item.getNome() == "gonorreia invertida") {	
+			if(item.getNome() == "Potion") {	
 				if(festa[index].atualizaVida(item.getCura())) 
 					System.out.println(">>> "+festa[index].getNome() + " foi curado em "+item.getCura()+"\n");
 				else
 					System.out.println(">>> "+festa[index].getNome() + " não pode ser curado, pois já está morto.\n");
 			}
-			if(item.getNome() == "pokesfera") {	
+			if(item.getNome() == "Pokesfera") {	
 				if(RNG.rolaDado(100 - 100*poke.getHp()/poke.getHpMax())) {
 					System.out.println(">>> Parabéns, voce capturou "+poke.getNome());
 					continua = false;	
@@ -166,6 +166,10 @@ public class ControladorPokemon extends ControladorDeEventos{
 			return id_poke;
 		}
 		return -1;
+	}
+	
+	public static void continuaset(boolean b) {
+		continua = b;
 	}
 	
 	public static boolean executaRound(Acao a1,Acao a2) {

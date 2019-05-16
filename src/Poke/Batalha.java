@@ -85,8 +85,10 @@ public class Batalha extends Constante{
 					a1 = new Acao(player1, FUGIR);
 					break;
 			}
+			
+			
 			if(player2.getPokeAtual().estaVivo())
-				a2 = new Acao(player2, ATACAR, 1);
+				a2 = new Acao(player2, ATACAR, RNG.rolaPoke(4));
 			else {
 				a2 = new Acao(player2, TROCAR, prox);
 				prox++;
@@ -94,24 +96,28 @@ public class Batalha extends Constante{
 			
 			continua = ControladorPokemon.executaRound(a1, a2);
 			if(!continua) {	
-				if(a1.getTipoEvento() == FUGIR) {
+				if(a1.getTipoEvento() == FUGIR) {   
+					System.out.flush();  
 					System.out.println("#############################");
 					System.out.println("Você perdeu!!!");
 					System.out.println("#############################");
-				}else {
+					ControladorPokemon.continuaset(true);
+					
+				}else {    
 					System.out.println("#############################");
-					System.out.println("A Batalha acabou: você capturou seu pokemon!!!");
+					System.out.println("A Batalha acabou");
 					System.out.println("#############################");
+					ControladorPokemon.continuaset(true);
 				}
 			}
 		}
 
 		if(continua) {
-			if(player1.getPokeMortos() != player1.getFesta().length) {
+			if(player1.getPokeMortos() != player1.getFesta().length) {  
 				System.out.println("#############################");
 				System.out.println("Você ganhou!!!");
 				System.out.println("#############################");
-			}else {
+			}else {    
 				System.out.println("#############################");
 				System.out.println("Você perdeu!!!");
 				System.out.println("#############################");
